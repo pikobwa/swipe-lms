@@ -1,0 +1,39 @@
+import { useParams } from "next/navigation";
+import Link from "next/link";
+
+const courses = [
+  { id: "1", title: "React Basics", description: "Learn the basics of React.", image: "/globe.svg" },
+  { id: "2", title: "Advanced JavaScript", description: "Deep dive into JS.", image: "/next.svg" },
+  { id: "3", title: "TypeScript Essentials", description: "Master TypeScript.", image: "/vercel.svg" },
+  { id: "4", title: "Node.js Fundamentals", description: "Backend with Node.js.", image: "/window.svg" },
+  { id: "5", title: "CSS for Beginners", description: "Style your web apps.", image: "/file.svg" },
+  { id: "6", title: "Fullstack Project", description: "Build a fullstack app.", image: "/globe.svg" },
+];
+
+export default function CourseDetailPage() {
+  const params = useParams();
+  const course = courses.find((c) => c.id === params?.id);
+
+  if (!course) {
+    return (
+      <main className="flex flex-col items-center justify-center min-h-screen">
+        <h2 className="text-2xl font-bold mb-4">Course Not Found</h2>
+        <Link href="/courses">
+          <a className="text-blue-600 underline">Back to Courses</a>
+        </Link>
+      </main>
+    );
+  }
+
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <img src={course.image} alt={course.title} className="w-32 h-32 mb-6" />
+      <h2 className="text-3xl font-bold mb-2">{course.title}</h2>
+      <p className="text-lg text-gray-600 mb-6">{course.description}</p>
+      <button className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition mb-4">Enroll</button>
+      <Link href="/courses">
+        <a className="text-blue-600 underline">Back to Courses</a>
+      </Link>
+    </main>
+  );
+}

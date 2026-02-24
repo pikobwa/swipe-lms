@@ -1,0 +1,15 @@
+import Link from "next/link";
+
+export default function HomePage() {
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-100 to-white">
+      <section className="text-center py-24">
+        <h1 className="text-5xl font-bold mb-4">Welcome to My LMS</h1>
+        <p className="text-xl text-gray-600 mb-8">Learn anything, anytime</p>
+        <Link href="/courses">
+          <a className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">Browse Courses</a>
+        </Link>
+      </section>
+    </main>
+  );
+}

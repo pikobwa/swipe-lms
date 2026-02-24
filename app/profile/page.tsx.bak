@@ -1,0 +1,34 @@
+import Link from "next/link";
+
+const user = {
+  name: "Jane Doe",
+  avatar: "/vercel.svg",
+  enrolledCourses: [
+    { id: "1", title: "React Basics" },
+    { id: "3", title: "TypeScript Essentials" },
+  ],
+};
+
+export default function ProfilePage() {
+  return (
+    <main className="max-w-xl mx-auto p-8">
+      <div className="flex items-center space-x-4 mb-8">
+        <img src={user.avatar} alt={user.name} className="w-20 h-20 rounded-full border" />
+        <div>
+          <h2 className="text-2xl font-bold">{user.name}</h2>
+          <p className="text-gray-500">Student</p>
+        </div>
+      </div>
+      <h3 className="text-xl font-semibold mb-4">Enrolled Courses</h3>
+      <ul className="space-y-3">
+        {user.enrolledCourses.map((course) => (
+          <li key={course.id}>
+            <Link href={`/courses/${course.id}`}>
+              <a className="text-blue-600 hover:underline">{course.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}

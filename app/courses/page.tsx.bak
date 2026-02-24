@@ -1,0 +1,29 @@
+import Link from "next/link";
+
+const courses = [
+  { id: "1", title: "React Basics", description: "Learn the basics of React.", image: "/globe.svg" },
+  { id: "2", title: "Advanced JavaScript", description: "Deep dive into JS.", image: "/next.svg" },
+  { id: "3", title: "TypeScript Essentials", description: "Master TypeScript.", image: "/vercel.svg" },
+  { id: "4", title: "Node.js Fundamentals", description: "Backend with Node.js.", image: "/window.svg" },
+  { id: "5", title: "CSS for Beginners", description: "Style your web apps.", image: "/file.svg" },
+  { id: "6", title: "Fullstack Project", description: "Build a fullstack app.", image: "/globe.svg" },
+];
+
+export default function CoursesPage() {
+  return (
+    <main className="p-8 max-w-6xl mx-auto">
+      <h2 className="text-3xl font-bold mb-8 text-center">Courses</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {courses.map((course) => (
+          <Link key={course.id} href={`/courses/${course.id}`}>
+            <a className="block bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center">
+              <img src={course.image} alt={course.title} className="w-20 h-20 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
+              <p className="text-gray-600">{course.description}</p>
+            </a>
+          </Link>
+        ))}
+      </div>
+    </main>
+  );
+}
